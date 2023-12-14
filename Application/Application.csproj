@@ -14,9 +14,4 @@
       <PackageReference Include="MediatR" Version="12.2.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Posts\QueriesHandlers\" />
-      <Folder Include="Posts\Queries\" />
-    </ItemGroup>
-
 </Project>

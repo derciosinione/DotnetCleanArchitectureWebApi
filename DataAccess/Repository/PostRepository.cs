@@ -6,7 +6,7 @@ namespace DataAccess.Repository;
 
 public class PostRepository(AppDbContext dbContext) : IPostRepository
 {
-    public async Task<ICollection<Post>> GetAllComments()
+    public async Task<ICollection<Post>> GetAllPosts()
     {
         var posts = await  dbContext.Posts.AsNoTracking().ToListAsync();
         return posts;

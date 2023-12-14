@@ -40,13 +40,14 @@ public class PostRepository(AppDbContext dbContext) : IPostRepository
         return post;
     }
 
-    public async Task DeletePost(Guid postId)
+    public async Task<bool> DeletePost(Guid postId)
     {
         var post = await GetPostById(postId);
         
-        if (post is null) return;
+        if (post is null) return false;
         
         dbContext.Posts.Remove(post);
         await dbContext.SaveChangesAsync();
+        return true;
     }
 }

@@ -8,5 +8,5 @@ public interface IPostRepository
     Task<Post?> GetPostById(Guid postId);
     Task<Post> CreatePost(Post post);
     Task<Post?> UpdatePost(Guid postId, Post post);
-    Task DeletePost(Guid postId);
+    Task<bool> DeletePost(Guid postId);
 }

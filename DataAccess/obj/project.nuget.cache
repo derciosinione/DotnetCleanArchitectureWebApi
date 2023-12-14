@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "XUDDvlwz+x4febXQ+RyVJj9Bf8fhYDMa4YJW/B9wQN1w2BHzchgjA9N713zPFijhK1Zp4rS0uSNR4f2KMjT5IQ==",
+  "dgSpecHash": "n1ukTxzLpX0LBymVVcdNu5SBIEL3yu+0UTB7T1uGF1g4BRJW4dJmjOH9sf1H1INMe3aidm3oQc7AE57M148c5Q==",
   "success": true,
   "projectFilePath": "/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/DataAccess/DataAccess.csproj",
   "expectedPackageFiles": [
+    "/Users/derciosinione/.nuget/packages/mediatr/12.2.0/mediatr.12.2.0.nupkg.sha512",
+    "/Users/derciosinione/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
     "/Users/derciosinione/.nuget/packages/microsoft.entityframeworkcore/8.0.0/microsoft.entityframeworkcore.8.0.0.nupkg.sha512",
     "/Users/derciosinione/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0/microsoft.entityframeworkcore.abstractions.8.0.0.nupkg.sha512",
     "/Users/derciosinione/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0/microsoft.entityframeworkcore.analyzers.8.0.0.nupkg.sha512",

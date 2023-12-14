@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "AgMWv2getvoJHknwKDQhnO6iPrAhfxrSys4LE6FPSZQddnlttaGRXLiHnCktnhDT/ms2CCHbsUzHXDW7kaDz2Q==",
+  "dgSpecHash": "59ZapkvLP+lL3FD3or1CgZYs/qgPZ3+nxVhQcGFbao30qNAOf/VHHN7+Cnf9hnNqP2GegYGr7t6twIq9OGRlrw==",
   "success": true,
   "projectFilePath": "/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/derciosinione/.nuget/packages/mediatr/12.2.0/mediatr.12.2.0.nupkg.sha512",
+    "/Users/derciosinione/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/derciosinione/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

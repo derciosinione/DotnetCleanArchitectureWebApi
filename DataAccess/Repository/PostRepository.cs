@@ -4,24 +4,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repository;
 
-public class PostRepository : IPostRepository
+public class PostRepository(AppDbContext dbContext) : IPostRepository
 {
-    private readonly AppDbContext _dbContext;
-
-    public PostRepository(AppDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-    
     public async Task<ICollection<Post>> GetAllComments()
     {
-        var posts = await  _dbContext.Posts.AsNoTracking().ToListAsync();
+        var posts = await  dbContext.Posts.AsNoTracking().ToListAsync();
         return posts;
     }
 
     public async Task<Post?> GetPostById(Guid postId)
     {
-        var post = await  _dbContext.Posts.FirstOrDefaultAsync(x=>x.Id==postId);
+        var post = await  dbContext.Posts.FirstOrDefaultAsync(x=>x.Id==postId);
         return post;
     }
 
@@ -29,8 +22,8 @@ public class PostRepository : IPostRepository
     {
         post.CreatedAt = DateTime.UtcNow;
         post.UpdatedAt = DateTime.UtcNow;
-        _dbContext.Posts.Add(post);
-        await _dbContext.SaveChangesAsync();
+        dbContext.Posts.Add(post);
+        await dbContext.SaveChangesAsync();
         return post;
     }
 
@@ -42,7 +35,7 @@ public class PostRepository : IPostRepository
         
         post.Content = postToUpdate.Content;
         post.UpdatedAt = DateTime.UtcNow;
-        await _dbContext.SaveChangesAsync();
+        await dbContext.SaveChangesAsync();
 
         return post;
     }
@@ -53,7 +46,7 @@ public class PostRepository : IPostRepository
         
         if (post is null) return;
         
-        _dbContext.Posts.Remove(post);
-        await _dbContext.SaveChangesAsync();
+        dbContext.Posts.Remove(post);
+        await dbContext.SaveChangesAsync();
     }
 }

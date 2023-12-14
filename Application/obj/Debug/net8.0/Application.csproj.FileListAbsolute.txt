@@ -1,0 +1,15 @@
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/bin/Debug/net8.0/Application.deps.json
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/bin/Debug/net8.0/Application.dll
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/bin/Debug/net8.0/Application.pdb
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/bin/Debug/net8.0/Domain.dll
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/bin/Debug/net8.0/Domain.pdb
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.csproj.AssemblyReference.cache
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.AssemblyInfoInputs.cache
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.AssemblyInfo.cs
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.csproj.CoreCompileInputs.cache
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.csproj.CopyComplete
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.dll
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/refint/Application.dll
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.pdb
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/ref/Application.dll

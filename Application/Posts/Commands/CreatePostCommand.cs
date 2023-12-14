@@ -5,5 +5,5 @@ namespace Application.Posts.Commands;
 
 public class CreatePostCommand : IRequest<Post>
 {
-    public string? Content { get; set; }
+    public required string Content { get; set; }
 }

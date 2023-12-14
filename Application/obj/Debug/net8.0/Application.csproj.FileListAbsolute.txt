@@ -13,3 +13,4 @@
 /Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/refint/Application.dll
 /Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.pdb
 /Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/ref/Application.dll
+/Users/derciosinione/Developer/DotnetCleanArchitectureWebApi/Application/obj/Debug/net8.0/Application.sourcelink.json

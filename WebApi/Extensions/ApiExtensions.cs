@@ -13,5 +13,4 @@ public static class ApiExtensions
         
         builder.Services.AddScoped<IPostRepository, PostRepository>();
     }
-    
 }

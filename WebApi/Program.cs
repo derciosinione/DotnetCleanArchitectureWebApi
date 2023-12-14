@@ -19,6 +19,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-PostEndpoints.MapPostsEndpoints(app);
+app.RegisterApiEndpoints();
 
 app.Run();

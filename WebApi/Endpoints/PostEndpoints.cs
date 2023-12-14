@@ -1,15 +1,16 @@
 using Application.Posts.Commands;
 using Application.Posts.Queries;
 using MediatR;
+using WebApi.Abstractions;
 using WebApi.Requests;
 
 namespace WebApi.Endpoints;
 
-public abstract class PostEndpoints
+public class PostEndpoints : IEndpointDefinitions
 {
     private const string BaseEndpoint = "/api/posts";
     
-    public static void MapPostsEndpoints(WebApplication app)
+    public void RegisterEndpoints(WebApplication app)
     {
         app.MapGet(BaseEndpoint, async (IMediator mediator) =>
         {

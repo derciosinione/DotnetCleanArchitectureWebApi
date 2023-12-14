@@ -27,14 +27,14 @@ public abstract class PostEndpoints
         }).WithName(nameof(GetPostById));
         
         
-        app.MapPost(BaseEndpoint, async (IMediator mediator, CreatePostRequest post) =>
+        app.MapPost(BaseEndpoint, async (ISender mediator, CreatePostRequest post) =>
         {
             var createPost = new CreatePostCommand { Content = post.Content };
             var result = await mediator.Send(createPost);
             return Results.CreatedAtRoute(nameof(GetPostById), new {result.Id}, result);
         });
         
-        app.MapPut($"{BaseEndpoint}/{{id:guid}}", async (IMediator mediator, Guid id, UpdatePostRequest request) =>
+        app.MapPut($"{BaseEndpoint}/{{id:guid}}", async (ISender mediator, Guid id, UpdatePostRequest request) =>
         {
             var createPost = new UpdatePostCreatePostCommand { PostId = id, Content = request.Content };
             var result = await mediator.Send(createPost);
@@ -44,11 +44,11 @@ public abstract class PostEndpoints
             Results.NoContent();
         });
         
-        app.MapDelete($"{BaseEndpoint}/{{id:guid}}", async (IMediator mediator, Guid id) =>
+        app.MapDelete($"{BaseEndpoint}/{{id:guid}}", async (ISender mediator, Guid id) =>
         {
             var query = new DeletePostCommand(id);
-            var result = await mediator.Send(query);
-            return Results.Ok(new {success = result});
+            var success = await mediator.Send(query);
+            return Results.Ok(new {success});
         });
     }
 }

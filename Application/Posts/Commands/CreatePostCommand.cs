@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Posts.Commands;
 
-public class CreatePost : IRequest<Post>
+public class CreatePostCommand : IRequest<Post>
 {
     public string? Content { get; set; }
 }

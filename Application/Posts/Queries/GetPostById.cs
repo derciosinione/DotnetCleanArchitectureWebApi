@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Posts.Queries;
 
-public class GetPostById : IRequest<Post>
+public class GetPostById(Guid postId) : IRequest<Post>
 {
-    public Guid PostId { get; set; }
+    public Guid PostId { get; } = postId;
 }

@@ -1,4 +1,3 @@
-using WebApi.Endpoints;
 using WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

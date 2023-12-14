@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Application.Posts.Queries;
 
-public class GetAllPosts : IRequest<ICollection<Post>>;
+public class GetAllPostsQuery : IRequest<ICollection<Post>>;

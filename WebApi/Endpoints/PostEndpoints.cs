@@ -9,47 +9,59 @@ namespace WebApi.Endpoints;
 public class PostEndpoints : IEndpointDefinitions
 {
     private const string BaseEndpoint = "/api/posts";
-    
     public void RegisterEndpoints(WebApplication app)
     {
-        app.MapGet(BaseEndpoint, async (IMediator mediator) =>
-        {
-            var query = new GetAllPosts();
-            var result = await mediator.Send(query);
-            return result==null! ? Results.NotFound() : Results.Ok(result);
-        }).WithName(nameof(GetAllPosts));
-
+        var api = app.MapGroup(BaseEndpoint);
         
-        app.MapGet($"{BaseEndpoint}/{{id:guid}}", async (IMediator mediator, Guid id) =>
-        {
-            var query = new GetPostById(id);
-            var result = await mediator.Send(query);
-            return result==null! ? Results.NotFound() : Results.Ok(result);
-        }).WithName(nameof(GetPostById));
+        api.MapGet(string.Empty, GetAllPosts).WithName(nameof(GetAllPostsQuery));
         
+        api.MapGet("/{id:guid}", GetPostById).WithName(nameof(GetPostByIdQuery));
         
-        app.MapPost(BaseEndpoint, async (ISender mediator, CreatePostRequest post) =>
-        {
-            var createPost = new CreatePostCommand { Content = post.Content };
-            var result = await mediator.Send(createPost);
-            return Results.CreatedAtRoute(nameof(GetPostById), new {result.Id}, result);
-        });
+        api.MapPost(string.Empty, CreatedPost);
         
-        app.MapPut($"{BaseEndpoint}/{{id:guid}}", async (ISender mediator, Guid id, UpdatePostRequest request) =>
-        {
-            var createPost = new UpdatePostCreatePostCommand { PostId = id, Content = request.Content };
-            var result = await mediator.Send(createPost);
-            
-            if (result!=null!) Results.BadRequest();
-            
-            Results.NoContent();
-        });
+        api.MapPut("/{id:guid}", UpdatePost);
         
-        app.MapDelete($"{BaseEndpoint}/{{id:guid}}", async (ISender mediator, Guid id) =>
-        {
-            var query = new DeletePostCommand(id);
-            var success = await mediator.Send(query);
-            return Results.Ok(new {success});
-        });
+        api.MapDelete("/{id:guid}", DeletePost);
     }
+    
+    private static async Task<IResult> GetPostById(ISender mediator, Guid id, CancellationToken cancellationToken)
+    {
+        var query = new GetPostByIdQuery(id);
+        var result = await mediator.Send(query, cancellationToken);
+        return result==null! ? Results.NotFound() : Results.Ok(result);
+    }
+
+    private static async Task<IResult> GetAllPosts(ISender mediator, CancellationToken cancellationToken)
+    {
+        var query = new GetAllPostsQuery();
+        var result = await mediator.Send(query, cancellationToken);
+        return result==null! ? TypedResults.NotFound() : TypedResults.Ok(result);
+    }
+    
+    private static async Task UpdatePost(Guid id, UpdatePostRequest request, ISender mediator,
+        CancellationToken cancellationToken)
+    {
+        var createPost = new UpdatePostPostCommand { PostId = id, Content = request.Content };
+        var result = await mediator.Send(createPost, cancellationToken);
+            
+        if (result!=null!) Results.BadRequest();
+            
+        Results.NoContent();
+    }
+
+    private static async Task<IResult> CreatedPost(CreatePostRequest post, ISender mediator,
+        CancellationToken cancellationToken)
+    {
+        var createPost = new CreatePostCommand { Content = post.Content };
+        var result = await mediator.Send(createPost, cancellationToken);
+        return Results.CreatedAtRoute(nameof(GetPostByIdQuery), new {result.Id}, result);
+    }
+    
+    private static async Task<IResult> DeletePost(Guid id, ISender mediator, CancellationToken cancellationToken)
+    {
+        var query = new DeletePostCommand(id);
+        var success = await mediator.Send(query, cancellationToken);
+        return TypedResults.Ok(new {success});
+    }
+    
 }

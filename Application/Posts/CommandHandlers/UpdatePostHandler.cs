@@ -5,9 +5,9 @@ using MediatR;
 
 namespace Application.Posts.CommandHandlers;
 
-public class UpdatePostHandler(IPostRepository repository) : IRequestHandler<UpdatePostCreatePostCommand, Post>
+public class UpdatePostHandler(IPostRepository repository) : IRequestHandler<UpdatePostPostCommand, Post>
 {
-    public async Task<Post> Handle(UpdatePostCreatePostCommand request, CancellationToken cancellationToken)
+    public async Task<Post> Handle(UpdatePostPostCommand request, CancellationToken cancellationToken)
     {
         var postToUpdate = new Post { Content = request.Content };
         var post = await repository.UpdatePost(request.PostId, postToUpdate);

@@ -5,9 +5,9 @@ using MediatR;
 
 namespace Application.Posts.QueriesHandlers;
 
-public class GetPostByIdHandler(IPostRepository repository) : IRequestHandler<GetPostById, Post>
+public class GetPostByIdHandler(IPostRepository repository) : IRequestHandler<GetPostByIdQuery, Post>
 {
-    public async Task<Post> Handle(GetPostById request, CancellationToken cancellationToken)
+    public async Task<Post> Handle(GetPostByIdQuery request, CancellationToken cancellationToken)
     {
         var post = await repository.GetPostById(request.PostId);
         return post!;

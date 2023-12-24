@@ -7,9 +7,9 @@ builder.Services.AddSwaggerGen();
 
 builder.RegisterApiServices();
 
+// Configure the HTTP request pipeline.
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -19,5 +19,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.RegisterApiEndpoints();
+
+// Exception Middleware filter
+app.Use((ctx, next) => ExceptionHandlers.MiddlewareFilter(next, ctx));
 
 app.Run();

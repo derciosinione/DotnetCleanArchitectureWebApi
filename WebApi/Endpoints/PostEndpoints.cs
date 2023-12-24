@@ -13,9 +13,11 @@ public class PostEndpoints : IEndpointDefinitions
     {
         var api = app.MapGroup(BaseEndpoint);
         
-        api.MapGet(string.Empty, GetAllPosts).WithName(nameof(GetAllPostsQuery));
+        api.MapGet(string.Empty, GetAllPosts)
+            .WithName(nameof(GetAllPosts));
         
-        api.MapGet("/{id:guid}", GetPostById).WithName(nameof(GetPostByIdQuery));
+        api.MapGet("/{id:guid}", GetPostById)
+            .WithName(nameof(GetPostById));
         
         api.MapPost(string.Empty, CreatedPost);
         
@@ -28,7 +30,7 @@ public class PostEndpoints : IEndpointDefinitions
     {
         var query = new GetPostByIdQuery(id);
         var result = await mediator.Send(query, cancellationToken);
-        return result==null! ? Results.NotFound() : Results.Ok(result);
+        return result==null! ? TypedResults.NotFound() : Results.Ok(result);
     }
 
     private static async Task<IResult> GetAllPosts(ISender mediator, CancellationToken cancellationToken)
@@ -44,9 +46,9 @@ public class PostEndpoints : IEndpointDefinitions
         var createPost = new UpdatePostPostCommand { PostId = id, Content = request.Content };
         var result = await mediator.Send(createPost, cancellationToken);
             
-        if (result!=null!) Results.BadRequest();
+        if (result!=null!) TypedResults.BadRequest();
             
-        Results.NoContent();
+        TypedResults.NoContent();
     }
 
     private static async Task<IResult> CreatedPost(CreatePostRequest post, ISender mediator,
@@ -63,5 +65,4 @@ public class PostEndpoints : IEndpointDefinitions
         var success = await mediator.Send(query, cancellationToken);
         return TypedResults.Ok(new {success});
     }
-    
 }
